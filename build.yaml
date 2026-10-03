@@ -1,0 +1,8 @@
+targets:
+  $default:
+    builders:
+      drift_dev:
+        options:
+          # Keep full timestamp precision so documents created within the same
+          # second still sort in creation order.
+          store_date_time_values_as_text: true

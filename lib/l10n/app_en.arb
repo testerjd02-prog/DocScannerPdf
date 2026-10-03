@@ -1,0 +1,318 @@
+{
+  "@@locale": "en",
+  "appName": "PacketPal",
+  "navHome": "Home",
+  "navLibrary": "Library",
+  "navPackets": "Packets",
+  "navSettings": "Settings",
+  "scanButtonLabel": "Scan a document",
+  "commonCancel": "Cancel",
+  "commonSave": "Save",
+  "commonDelete": "Delete",
+  "commonDone": "Done",
+  "commonNext": "Next",
+  "commonBack": "Back",
+  "commonSkip": "Skip",
+  "commonUndo": "Undo",
+  "commonRename": "Rename",
+  "commonRetry": "Retry",
+  "commonClose": "Close",
+  "commonCreate": "Create",
+  "commonMove": "Move",
+  "commonCopy": "Copy",
+  "commonLoading": "Loading",
+  "commonGenericError": "Something went wrong. Please try again.",
+  "commonOpen": "Open",
+  "onboarding1Title": "Scans that stay on your phone",
+  "onboarding1Body": "No account, no cloud upload, no tracking of what you scan. Your documents live in private app storage on this device.",
+  "onboarding2Title": "Build application packets",
+  "onboarding2Body": "Collect the documents for a rental, loan, visa or job application in the right order, with a checklist so nothing is missing.",
+  "onboarding3Title": "Honest and simple",
+  "onboarding3Body": "Unlimited scanning with no watermark and no ads. Optional extras are priced up front, before you ever pay.",
+  "onboardingGetStarted": "Get started",
+  "onboardingSkip": "Skip",
+  "onboardingNext": "Next",
+  "onboardingPage": "Page {current} of {total}",
+  "@onboardingPage": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "homeTitle": "PacketPal",
+  "homeTagline": "Your documents stay on this phone.",
+  "homeQuickScan": "Quick scan",
+  "homeQuickScanSubtitle": "Capture a single document",
+  "homeNewPacket": "New packet",
+  "homeNewPacketSubtitle": "Rental, loan, visa, job",
+  "homeRecent": "Recent documents",
+  "homeSeeAll": "See all",
+  "homeEmptyTitle": "Nothing scanned yet",
+  "homeEmptyBody": "Tap the scan button to capture your first document. It is saved only on this device.",
+  "scanRationaleTitle": "Camera access",
+  "scanRationaleBody": "PacketPal opens your camera to photograph documents. Pictures are processed and stored on this device only and are never uploaded. Your phone will now ask for permission.",
+  "scanRationaleContinue": "Continue",
+  "scanAddTitle": "Add pages",
+  "scanFromCamera": "Scan with camera",
+  "scanFromCameraSubtitle": "Automatic edge detection",
+  "scanFromPhotos": "Import from photos",
+  "scanFromPhotosSubtitle": "Pick pictures from your gallery",
+  "scanFromFiles": "Import from files",
+  "scanFromFilesSubtitle": "Images and PDFs",
+  "scanImporting": "Preparing pages…",
+  "scanFailed": "Could not capture: {message}",
+  "@scanFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "scanNothingAdded": "No pages were added.",
+  "editorTitle": "Edit page",
+  "editorCrop": "Crop",
+  "editorFilters": "Filters",
+  "cropHint": "Drag the corners to fit the page edges.",
+  "cropReset": "Reset",
+  "cropHandleLabel": "{corner} corner of the crop area",
+  "@cropHandleLabel": {
+    "placeholders": {
+      "corner": {
+        "type": "String"
+      }
+    }
+  },
+  "cropTopLeft": "Top left",
+  "cropTopRight": "Top right",
+  "cropBottomRight": "Bottom right",
+  "cropBottomLeft": "Bottom left",
+  "filterOriginal": "Original",
+  "filterEnhanced": "Enhanced",
+  "filterGrayscale": "Grayscale",
+  "filterBlackWhite": "Black & white",
+  "rotateRight": "Rotate right",
+  "applyFilterToAll": "Apply to all pages",
+  "editorPreviewFailed": "Could not update the preview.",
+  "editorSavingPage": "Saving page…",
+  "cropPageOf": "Crop page {current} of {total}",
+  "@cropPageOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewTitle": "New document",
+  "reviewNameLabel": "Document name",
+  "reviewSave": "Save document",
+  "reviewSaving": "Saving…",
+  "reviewAddPages": "Add pages",
+  "reviewPagesCount": "{count, plural, =1{1 page} other{{count} pages}}",
+  "@reviewPagesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewDiscardTitle": "Discard this scan?",
+  "reviewDiscardBody": "The pages you captured will be deleted.",
+  "reviewDiscard": "Discard",
+  "reviewKeep": "Keep editing",
+  "reviewPageLabel": "Page {number}",
+  "@reviewPageLabel": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewEditPage": "Edit page {number}",
+  "@reviewEditPage": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewDeletePage": "Delete page {number}",
+  "@reviewDeletePage": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewDragHint": "Drag the handle to reorder",
+  "reviewReorderHandle": "Reorder page {number}",
+  "@reviewReorderHandle": {
+    "placeholders": {
+      "number": {
+        "type": "int"
+      }
+    }
+  },
+  "reviewEmpty": "No pages yet. Add some to continue.",
+  "reviewSaveFailed": "Could not save the document.",
+  "libraryTitle": "Library",
+  "searchHint": "Search names and text inside scans",
+  "searchClear": "Clear search",
+  "sortNewest": "Newest first",
+  "sortOldest": "Oldest first",
+  "sortNameAsc": "Name A–Z",
+  "sortNameDesc": "Name Z–A",
+  "sortMenuLabel": "Sort",
+  "viewGrid": "Grid view",
+  "viewList": "List view",
+  "foldersAll": "All",
+  "folderNew": "New folder",
+  "folderNameLabel": "Folder name",
+  "folderRenameTitle": "Rename folder",
+  "folderDeleteTitle": "Delete folder?",
+  "folderDeleteBody": "Documents inside are kept and become unfiled.",
+  "folderMoveTitle": "Move to folder",
+  "folderNone": "No folder",
+  "selectedCount": "{count} selected",
+  "@selectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectionClear": "Cancel selection",
+  "documentsDeleted": "{count, plural, =1{Document deleted} other{{count} documents deleted}}",
+  "@documentsDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "libraryEmptyTitle": "No documents yet",
+  "libraryEmptyBody": "Scanned and imported documents will appear here.",
+  "libraryNoResultsTitle": "No matches",
+  "libraryNoResultsBody": "Nothing matched “{query}”.",
+  "@libraryNoResultsBody": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "documentCopyTitle": "{title} (copy)",
+  "@documentCopyTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "documentSemantics": "{title}, {pages, plural, =1{1 page} other{{pages} pages}}",
+  "@documentSemantics": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      },
+      "pages": {
+        "type": "int"
+      }
+    }
+  },
+  "detailNotFound": "This document no longer exists.",
+  "detailRenameTitle": "Rename document",
+  "detailDuplicate": "Duplicate",
+  "detailExport": "Export",
+  "detailCopyText": "Copy text",
+  "detailTextCopied": "Text copied",
+  "detailNoText": "No text was found in this document yet.",
+  "detailAddPages": "Add pages",
+  "detailEditPage": "Edit page",
+  "detailDeletePage": "Delete page",
+  "detailLastPage": "A document needs at least one page. Delete the whole document instead.",
+  "detailPageDeleted": "Page deleted",
+  "detailTagsLabel": "Tags",
+  "detailAddTag": "Add tag",
+  "detailTagHint": "Tag name",
+  "detailIndexing": "Reading text…",
+  "detailCreated": "Scanned {date}",
+  "@detailCreated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "exportTitle": "Export",
+  "exportPdf": "PDF",
+  "exportPdfSubtitle": "One searchable file, text layer included",
+  "exportImages": "Images (JPG)",
+  "exportImagesSubtitle": "One picture per page",
+  "exportBuilding": "Preparing file…",
+  "exportFailed": "Export failed. Please try again.",
+  "exportShareSubject": "{title}",
+  "@exportShareSubject": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsTitle": "Settings",
+  "settingsAppearance": "Appearance",
+  "settingsTheme": "Theme",
+  "themeSystem": "Match system",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsScanning": "Scanning",
+  "settingsOcrLanguage": "Text recognition language",
+  "ocrLatin": "Latin (English, Spanish, French…)",
+  "ocrDevanagari": "Devanagari (Hindi, Marathi…)",
+  "ocrChinese": "Chinese",
+  "ocrJapanese": "Japanese",
+  "ocrKorean": "Korean",
+  "settingsPrivacy": "Privacy",
+  "settingsPrivacyTitle": "Your scans never leave this device",
+  "settingsPrivacyBody": "PacketPal has no account and no cloud upload. Text recognition runs on the phone. Nothing about your documents is sent anywhere.",
+  "settingsLanguage": "Language",
+  "languageEnglish": "English",
+  "settingsHelp": "Help & FAQ",
+  "settingsAbout": "About",
+  "settingsLicenses": "Open-source licenses",
+  "settingsAboutBody": "Privacy-first document scanner and packet builder.",
+  "settingsComingSoon": "Coming soon",
+  "packetsTitle": "Packets",
+  "packetsEmptyTitle": "Application packets are on the way",
+  "packetsEmptyBody": "Soon you will be able to collect documents for rental, loan, visa and job applications with a checklist and export them in one tap.",
+  "helpTitle": "Help",
+  "helpQ1": "Where are my scans stored?",
+  "helpA1": "Only in private storage inside this app on your phone. They are not uploaded anywhere.",
+  "helpQ2": "How do I scan several pages?",
+  "helpA2": "Tap the scan button and keep capturing pages. You can also add pages later from a document.",
+  "helpQ3": "Can I change a scan after saving?",
+  "helpA3": "Yes. Open the document, choose a page and adjust the crop, filter or rotation. The original picture is always kept.",
+  "helpQ4": "How does search work?",
+  "helpA4": "Text in every scan is read on your phone, so you can search for names and words inside documents.",
+  "kindBankStatement": "Bank Statement",
+  "kindPayStub": "Pay Stub",
+  "kindPassport": "Passport",
+  "kindDriverLicense": "Driver's License",
+  "kindIdCard": "ID Card",
+  "kindUtilityBill": "Utility Bill",
+  "kindLeaseAgreement": "Lease Agreement",
+  "kindTaxDocument": "Tax Document",
+  "kindInvoice": "Invoice",
+  "kindReceipt": "Receipt",
+  "kindReferenceLetter": "Reference Letter",
+  "kindOfferLetter": "Offer Letter",
+  "kindInsurance": "Insurance",
+  "kindBirthCertificate": "Birth Certificate",
+  "kindFallback": "Document"
+}
