@@ -270,11 +270,19 @@ void main() {
           unawaited_(router.push('/document/${seeded.rentalId}'));
           await _wait(tester);
           await _snap(tester, key, p, 'detail');
+          // The share sheet sits at the bottom, so capture this one on a
+          // shorter phone to keep the whole sheet inside the store frame.
+          if (p.name == 'phone') {
+            tester.view.physicalSize = Size(p.width * p.ratio, 600 * p.ratio);
+            await tester.pump();
+          }
           await tester.tap(find.byTooltip('Export'));
           await _wait(tester, ms: 300);
           await _snap(tester, key, p, 'export');
           await tester.tapAt(const Offset(10, 10));
           await _wait(tester, ms: 250);
+          tester.view.physicalSize = Size(p.width * p.ratio, p.height * p.ratio);
+          await tester.pump();
 
           await go('/settings');
           await _snap(tester, key, p, 'settings');

@@ -34,13 +34,15 @@ def font(name, size):
 
 
 def gradient(w, h):
-    img = Image.new('RGB', (w, h))
+    """Smooth diagonal gradient: computed small, then scaled up (fast)."""
+    sw, sh = max(2, w // 16), max(2, h // 16)
+    img = Image.new('RGB', (sw, sh))
     p = img.load()
-    for y in range(h):
-        for x in range(w):
-            t = x / w * 0.55 + y / h * 0.45
+    for y in range(sh):
+        for x in range(sw):
+            t = x / sw * 0.55 + y / sh * 0.45
             p[x, y] = tuple(int(TEAL_LIGHT[i] * (1 - t) + TEAL_DARK[i] * t) for i in range(3))
-    return img.convert('RGBA')
+    return img.resize((w, h), Image.BICUBIC).convert('RGBA')
 
 
 def status_bar(screen, ink, strip):
@@ -93,7 +95,7 @@ def compose(shot, headline, sub, dark, w, h, kind):
     if kind == 'phone':
         title_px, sub_px, top, dev_w, bezel, radius, strip, dev_top = 84, 38, 110, 880, 16, 56, 84, 470
     else:
-        title_px, sub_px, top, dev_w, bezel, radius, strip, dev_top = 110, 50, 150, 1300, 26, 56, 56, 470
+        title_px, sub_px, top, dev_w, bezel, radius, strip, dev_top = 104, 48, 130, 1240, 26, 56, 56, 600
     cx = w // 2
     f_title = font('Outfit-Bold.ttf', title_px * ss)
     f_sub = font('InstrumentSans-Regular.ttf', sub_px * ss)
