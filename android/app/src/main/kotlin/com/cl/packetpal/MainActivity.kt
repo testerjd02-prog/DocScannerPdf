@@ -1,4 +1,4 @@
-package com.packetpal.packet_pal
+package com.cl.packetpal
 
 import io.flutter.embedding.android.FlutterActivity
 
