@@ -50,6 +50,15 @@ Debug helpers (dart-defines):
 --dart-define=ADMOB_TEST_DEVICE_IDS=<id>       # test device for ad requests
 ```
 
+## Where the ids live
+
+* **Test ids (app + all five units, Android and iOS):**
+  `lib/features/ads/data/admob_config.dart` is the only Dart place. The native
+  projects must also hold the *app* id (the SDK reads it before Dart runs); they
+  are marked with a comment and `test/admob_config_test.dart` fails if they
+  drift from the Dart values.
+* **Production ids:** never committed; passed at build time (below).
+
 ## Going to production
 
 Debug/profile builds always use Google's test ad units. For release:

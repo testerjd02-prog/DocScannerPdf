@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import '../domain/ad_format.dart';
+import 'admob_config.dart';
 
 /// Resolves AdMob ad unit ids.
 ///
@@ -30,22 +31,9 @@ abstract final class AdUnitIds {
     AdFormat.appOpen: String.fromEnvironment('ADMOB_IOS_APP_OPEN'),
   };
 
-  /// Google's published sample ad units (always return test creatives).
-  static const testAndroid = <AdFormat, String>{
-    AdFormat.banner: 'ca-app-pub-3940256099942544/9214589741',
-    AdFormat.native: 'ca-app-pub-3940256099942544/2247696110',
-    AdFormat.interstitial: 'ca-app-pub-3940256099942544/1033173712',
-    AdFormat.rewarded: 'ca-app-pub-3940256099942544/5224354917',
-    AdFormat.appOpen: 'ca-app-pub-3940256099942544/9257395921',
-  };
-
-  static const testIos = <AdFormat, String>{
-    AdFormat.banner: 'ca-app-pub-3940256099942544/2934735716',
-    AdFormat.native: 'ca-app-pub-3940256099942544/3986624511',
-    AdFormat.interstitial: 'ca-app-pub-3940256099942544/4411468910',
-    AdFormat.rewarded: 'ca-app-pub-3940256099942544/1712485313',
-    AdFormat.appOpen: 'ca-app-pub-3940256099942544/5575463023',
-  };
+  /// Google's sample ad units, from the central [AdMobConfig].
+  static Map<AdFormat, String> get testAndroid => AdMobConfig.testAndroid.units;
+  static Map<AdFormat, String> get testIos => AdMobConfig.testIos.units;
 
   /// The id for [format] on the current platform, or null if the format is
   /// disabled (release build without a configured id, or unsupported OS).

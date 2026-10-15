@@ -1,9 +1,7 @@
 name: Android debug APK
 
+# Manual only: run it from the Actions tab when you want an APK.
 on:
-  push:
-    branches: [main, 'ccr-**']
-  pull_request:
   workflow_dispatch:
 
 concurrency:

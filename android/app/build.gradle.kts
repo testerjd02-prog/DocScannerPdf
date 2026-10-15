@@ -28,8 +28,9 @@ android {
         // flag during build.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
-        // AdMob *app* id. Defaults to Google's public test id; release builds
-        // must pass the real one:  -PadmobAppId=ca-app-pub-XXXX~YYYY
+        // AdMob *app* id. Defaults to Google's public test id, which is kept in
+        // lib/features/ads/data/admob_config.dart (a test checks they match).
+        // Release builds must pass the real one: -PadmobAppId=ca-app-pub-XXXX~YYYY
         manifestPlaceholders["admobAppId"] =
             (project.findProperty("admobAppId") as String?)
                 ?: "ca-app-pub-3940256099942544~3347511713"

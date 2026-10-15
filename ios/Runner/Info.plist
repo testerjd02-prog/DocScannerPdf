@@ -28,6 +28,8 @@
 	<string>PacketPal uses the camera to photograph your documents. Pictures stay on this device and are never uploaded.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>PacketPal reads pictures you choose from your photo library so you can turn them into documents. Nothing is uploaded.</string>
+	<!-- AdMob test app id; source of truth: lib/features/ads/data/admob_config.dart.
+	     Replace with the real iOS app id for release. -->
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>NSUserTrackingUsageDescription</key>
