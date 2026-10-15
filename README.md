@@ -2,7 +2,7 @@
 
 Privacy-first document scanner that helps you build and submit application
 packets (rental, loan, visa, job onboarding). Scans never leave the device, no
-watermark, no ads, honest pricing.
+watermark, honest pricing.
 
 ## Status
 

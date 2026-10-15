@@ -265,7 +265,7 @@ abstract class AppLocalizations {
   /// No description provided for @onboarding3Body.
   ///
   /// In en, this message translates to:
-  /// **'Unlimited scanning with no watermark and no ads. Optional extras are priced up front, before you ever pay.'**
+  /// **'Unlimited scanning with no watermark. Optional extras are priced up front, before you ever pay.'**
   String get onboarding3Body;
 
   /// No description provided for @onboardingGetStarted.

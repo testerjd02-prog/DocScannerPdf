@@ -90,7 +90,7 @@ def main():
 
     x = left
     pf = f('InstrumentSans-Bold.ttf', 21)
-    for label in ('No watermark', 'No ads', 'No account'):
+    for label in ('No watermark', 'No account', 'On-device'):
         x = pill(img, (x, 394 * S), label, pf)
 
     out = img.resize((1024, 500), Image.LANCZOS).convert('RGB')

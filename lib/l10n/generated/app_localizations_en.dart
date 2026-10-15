@@ -97,7 +97,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboarding3Body =>
-      'Unlimited scanning with no watermark and no ads. Optional extras are priced up front, before you ever pay.';
+      'Unlimited scanning with no watermark. Optional extras are priced up front, before you ever pay.';
 
   @override
   String get onboardingGetStarted => 'Get started';
