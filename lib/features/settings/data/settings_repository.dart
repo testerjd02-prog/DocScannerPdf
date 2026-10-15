@@ -9,6 +9,7 @@ class SettingsRepository {
   static const keyThemeMode = 'theme_mode';
   static const keyOcrScript = 'ocr_script';
   static const keyCameraRationaleSeen = 'camera_rationale_seen';
+  static const keyAdFreeUntil = 'ad_free_until';
 
   Future<Map<String, String>> loadAll() async {
     final rows = await _db.select(_db.appSettings).get();

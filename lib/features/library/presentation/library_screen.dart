@@ -4,6 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n_x.dart';
 import '../../../core/widgets/empty_state.dart';
+import '../../ads/data/ads_providers.dart';
+import '../../ads/domain/ad_interleaver.dart';
+import '../../ads/presentation/native_ad_tile.dart';
 import '../data/library_providers.dart';
 import '../domain/library_models.dart';
 import 'delete_with_undo.dart';
@@ -190,23 +193,58 @@ class _LibraryScreenState extends ConsumerState<LibraryScreen> {
                       : context.push('/document/${d.id}'),
                   onLongPress: () => _toggle(d.id),
                 );
-                if (mode == LibraryViewMode.list) {
-                  return ListView.builder(
-                    padding: const EdgeInsets.fromLTRB(12, 4, 12, 100),
-                    itemCount: items.length,
-                    itemBuilder: (context, i) => tile(items[i], false),
-                  );
-                }
-                return GridView.builder(
-                  padding: const EdgeInsets.fromLTRB(12, 4, 12, 100),
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    childAspectRatio: 0.72,
-                    mainAxisSpacing: 4,
-                    crossAxisSpacing: 4,
-                  ),
-                  itemCount: items.length,
-                  itemBuilder: (context, i) => tile(items[i], true),
+                final ads = ref.watch(adsFacadeProvider);
+                return ValueListenableBuilder<bool>(
+                  valueListenable: ads.canServe,
+                  builder: (context, serving, _) {
+                    // Native ads only between plain browsing rows: never while
+                    // searching (the user is hunting for something) or while
+                    // selecting, and never in a short list.
+                    final showAds =
+                        serving &&
+                        !_selecting &&
+                        filter.query.trim().isEmpty &&
+                        items.length >= 5;
+                    final segments = showAds
+                        ? planAdSegments(items.length)
+                        : [AdSegment(start: 0, end: items.length)];
+                    final grid = mode == LibraryViewMode.grid;
+                    return CustomScrollView(
+                      slivers: [
+                        for (final seg in segments) ...[
+                          SliverPadding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            sliver: grid
+                                ? SliverGrid.builder(
+                                    gridDelegate:
+                                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                                          maxCrossAxisExtent: 200,
+                                          childAspectRatio: 0.72,
+                                          mainAxisSpacing: 4,
+                                          crossAxisSpacing: 4,
+                                        ),
+                                    itemCount: seg.length,
+                                    itemBuilder: (context, i) =>
+                                        tile(items[seg.start + i], true),
+                                  )
+                                : SliverList.builder(
+                                    itemCount: seg.length,
+                                    itemBuilder: (context, i) =>
+                                        tile(items[seg.start + i], false),
+                                  ),
+                          ),
+                          if (seg.adSlotAfter != null)
+                            SliverToBoxAdapter(
+                              child: NativeAdTile(
+                                key: ValueKey('native-${seg.adSlotAfter}'),
+                                slot: seg.adSlotAfter!,
+                              ),
+                            ),
+                        ],
+                        const SliverToBoxAdapter(child: SizedBox(height: 100)),
+                      ],
+                    );
+                  },
                 );
               },
             ),

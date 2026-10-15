@@ -19,8 +19,8 @@ android {
         applicationId = "com.cl.packetpal"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        // ML Kit document scanner / text recognition need API 21+.
-        minSdk = maxOf(21, flutter.minSdkVersion)
+        // google_mobile_ads requires API 24+ (ML Kit alone needs 21).
+        minSdk = maxOf(24, flutter.minSdkVersion)
         targetSdk = flutter.targetSdkVersion
         // Uses the version code from pubspec.yaml. When using split APKs, 1000 * ABI_VERSION
         // is added automatically by Flutter. (https://developer.android.com/studio/build/configure-apk-splits#configure-APK-versions)
@@ -28,6 +28,11 @@ android {
         // flag during build.
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        // AdMob *app* id. Defaults to Google's public test id; release builds
+        // must pass the real one:  -PadmobAppId=ca-app-pub-XXXX~YYYY
+        manifestPlaceholders["admobAppId"] =
+            (project.findProperty("admobAppId") as String?)
+                ?: "ca-app-pub-3940256099942544~3347511713"
     }
 
     buildTypes {

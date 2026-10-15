@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n_x.dart';
 import '../../../core/widgets/blocking_progress.dart';
+import '../../ads/data/ads_providers.dart';
 import '../../library/data/library_providers.dart';
 import '../../settings/data/settings_providers.dart';
 import '../../settings/data/settings_repository.dart';
@@ -120,11 +121,17 @@ abstract final class ScanActions {
     final progress = BlockingProgress.show(context, l10n.scanImporting);
     List<String> paths;
     try {
-      paths = switch (source) {
-        ScanSource.camera => await capture.scan(sessionId: sessionId),
-        ScanSource.photos => await capture.importPhotos(sessionId: sessionId),
-        ScanSource.files => await capture.importFiles(sessionId: sessionId),
-      };
+      // Camera, gallery and file pickers are system screens: returning from
+      // them must not look like an app "resume" worth an app-open ad.
+      paths = await ref
+          .read(adsFacadeProvider)
+          .runExternalFlow(
+            () => switch (source) {
+              ScanSource.camera => capture.scan(sessionId: sessionId),
+              ScanSource.photos => capture.importPhotos(sessionId: sessionId),
+              ScanSource.files => capture.importFiles(sessionId: sessionId),
+            },
+          );
     } on CaptureException catch (e) {
       progress.close();
       messenger.showSnackBar(

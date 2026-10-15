@@ -9,6 +9,8 @@ import '../../../core/theme/app_theme.dart';
 import '../../../core/widgets/blocking_progress.dart';
 import '../../../core/widgets/empty_state.dart';
 import '../../../core/widgets/page_tile.dart';
+import '../../ads/data/ads_providers.dart';
+import '../../ads/domain/ad_format.dart';
 import '../../library/data/library_providers.dart';
 import '../../library/presentation/naming_labels.dart';
 import '../../settings/data/settings_providers.dart';
@@ -30,6 +32,16 @@ class _ScanReviewScreenState extends ConsumerState<ScanReviewScreen> {
   final _title = TextEditingController();
   String? _provisionalTitle;
   bool _saving = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // The user will most likely save in a moment: that is when an
+    // interstitial may be wanted, so this is the one place it is preloaded.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) ref.read(adsFacadeProvider).warmUp(AdFormat.interstitial);
+    });
+  }
 
   @override
   void didChangeDependencies() {
@@ -97,6 +109,7 @@ class _ScanReviewScreenState extends ConsumerState<ScanReviewScreen> {
     setState(() => _saving = true);
     final progress = BlockingProgress.show(context, l10n.reviewSaving);
     try {
+      final ads = ref.read(adsFacadeProvider);
       final saver = ref.read(documentSaverProvider);
       final indexer = ref.read(ocrIndexerProvider);
       final script = ref.read(ocrScriptProvider);
@@ -129,6 +142,8 @@ class _ScanReviewScreenState extends ConsumerState<ScanReviewScreen> {
       // Land on the library with the document on top, so Back works naturally.
       router.go('/library');
       unawaited(router.push('/document/$documentId'));
+      // A natural break: the save is done and the user is moving on.
+      ads.noteEvent(AdEvent.documentSaved);
     } on Object {
       progress.close();
       messenger.showSnackBar(SnackBar(content: Text(l10n.reviewSaveFailed)));

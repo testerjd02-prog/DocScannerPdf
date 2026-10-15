@@ -1051,7 +1051,7 @@ abstract class AppLocalizations {
   /// No description provided for @settingsPrivacyBody.
   ///
   /// In en, this message translates to:
-  /// **'PacketPal has no account and no cloud upload. Text recognition runs on the phone. Nothing about your documents is sent anywhere.'**
+  /// **'PacketPal has no account and no cloud upload. Text recognition runs on the phone, and your documents and the text in them are never sent anywhere. Ads, when shown, come from Google AdMob and never receive your documents.'**
   String get settingsPrivacyBody;
 
   /// No description provided for @settingsLanguage.
@@ -1257,6 +1257,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Document'**
   String get kindFallback;
+
+  /// No description provided for @settingsAds.
+  ///
+  /// In en, this message translates to:
+  /// **'Ads'**
+  String get settingsAds;
+
+  /// No description provided for @adsBreakTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Take an ad-free break'**
+  String get adsBreakTitle;
+
+  /// No description provided for @adsBreakSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch a short video, then use PacketPal without ads for {minutes} minutes'**
+  String adsBreakSubtitle(int minutes);
+
+  /// No description provided for @adsBreakActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Ad-free until {time}'**
+  String adsBreakActive(String time);
+
+  /// No description provided for @adsLoadingVideo.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading video…'**
+  String get adsLoadingVideo;
+
+  /// No description provided for @adsVideoUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No video is available right now. Please try again in a moment.'**
+  String get adsVideoUnavailable;
+
+  /// No description provided for @adsBreakGranted.
+  ///
+  /// In en, this message translates to:
+  /// **'Enjoy {minutes} minutes without ads'**
+  String adsBreakGranted(int minutes);
+
+  /// No description provided for @adsPrivacyChoices.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy & ad choices'**
+  String get adsPrivacyChoices;
+
+  /// No description provided for @adsPrivacyChoicesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Review or change your ad consent'**
+  String get adsPrivacyChoicesSubtitle;
+
+  /// No description provided for @helpQ5.
+  ///
+  /// In en, this message translates to:
+  /// **'Why are there ads?'**
+  String get helpQ5;
+
+  /// No description provided for @helpA5.
+  ///
+  /// In en, this message translates to:
+  /// **'Ads keep scanning and OCR free with no page limits or watermarks. Ads are served by Google AdMob and never see your documents or the text in them. You can change your ad choices in Settings, or take a short ad-free break.'**
+  String get helpA5;
 }
 
 class _AppLocalizationsDelegate

@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/router/app_router.dart';
+import 'features/ads/presentation/ad_lifecycle_host.dart';
 import 'core/theme/app_theme.dart';
 import 'features/settings/data/settings_providers.dart';
 import 'l10n/generated/app_localizations.dart';
@@ -18,6 +19,8 @@ class PacketPalApp extends ConsumerWidget {
       darkTheme: AppTheme.dark(),
       themeMode: ref.watch(themeModeProvider),
       routerConfig: ref.watch(routerProvider),
+      builder: (context, child) =>
+          AdLifecycleHost(child: child ?? const SizedBox.shrink()),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

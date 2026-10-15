@@ -280,7 +280,7 @@
   "ocrKorean": "Korean",
   "settingsPrivacy": "Privacy",
   "settingsPrivacyTitle": "Your scans never leave this device",
-  "settingsPrivacyBody": "PacketPal has no account and no cloud upload. Text recognition runs on the phone. Nothing about your documents is sent anywhere.",
+  "settingsPrivacyBody": "PacketPal has no account and no cloud upload. Text recognition runs on the phone, and your documents and the text in them are never sent anywhere. Ads, when shown, come from Google AdMob and never receive your documents.",
   "settingsLanguage": "Language",
   "languageEnglish": "English",
   "settingsHelp": "Help & FAQ",
@@ -314,5 +314,37 @@
   "kindOfferLetter": "Offer Letter",
   "kindInsurance": "Insurance",
   "kindBirthCertificate": "Birth Certificate",
-  "kindFallback": "Document"
+  "kindFallback": "Document",
+  "settingsAds": "Ads",
+  "adsBreakTitle": "Take an ad-free break",
+  "adsBreakSubtitle": "Watch a short video, then use PacketPal without ads for {minutes} minutes",
+  "@adsBreakSubtitle": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "adsBreakActive": "Ad-free until {time}",
+  "@adsBreakActive": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "adsLoadingVideo": "Loading video…",
+  "adsVideoUnavailable": "No video is available right now. Please try again in a moment.",
+  "adsBreakGranted": "Enjoy {minutes} minutes without ads",
+  "@adsBreakGranted": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "adsPrivacyChoices": "Privacy & ad choices",
+  "adsPrivacyChoicesSubtitle": "Review or change your ad consent",
+  "helpQ5": "Why are there ads?",
+  "helpA5": "Ads keep scanning and OCR free with no page limits or watermarks. Ads are served by Google AdMob and never see your documents or the text in them. You can change your ad choices in Settings, or take a short ad-free break."
 }

@@ -4,6 +4,8 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../../core/l10n_x.dart';
 import '../../../core/widgets/blocking_progress.dart';
+import '../../ads/data/ads_providers.dart';
+import '../../ads/domain/ad_format.dart';
 import '../data/export_providers.dart';
 
 enum _Format { pdf, images }
@@ -16,6 +18,9 @@ Future<void> showExportSheet(
   required String title,
 }) async {
   final l10n = context.l10n;
+  final ads = ref.read(adsFacadeProvider);
+  // The user is about to export; an interstitial may follow.
+  ads.warmUp(AdFormat.interstitial);
   final format = await showModalBottomSheet<_Format>(
     context: context,
     showDragHandle: true,
@@ -61,13 +66,16 @@ Future<void> showExportSheet(
       _Format.images => await exporter.exportImages(documentId, title),
     };
     progress.close();
-    await SharePlus.instance.share(
-      ShareParams(
-        files: [for (final path in paths) XFile(path)],
-        subject: l10n.exportShareSubject(title),
-        sharePositionOrigin: origin,
+    await ads.runExternalFlow(
+      () => SharePlus.instance.share(
+        ShareParams(
+          files: [for (final path in paths) XFile(path)],
+          subject: l10n.exportShareSubject(title),
+          sharePositionOrigin: origin,
+        ),
       ),
     );
+    ads.noteEvent(AdEvent.exportCompleted);
   } on Object {
     progress.close();
     messenger.showSnackBar(SnackBar(content: Text(l10n.exportFailed)));

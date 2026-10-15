@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -7,6 +8,9 @@ import 'app.dart';
 import 'core/database/app_database.dart';
 import 'core/database/providers.dart';
 import 'core/storage/file_store.dart';
+import 'features/ads/data/ads_facade.dart';
+import 'features/ads/data/ads_providers.dart';
+import 'features/ads/data/google_ads_service.dart';
 import 'features/library/data/library_repository.dart';
 import 'features/settings/data/settings_providers.dart';
 import 'features/settings/data/settings_repository.dart';
@@ -18,9 +22,15 @@ Future<void> main() async {
   final db = AppDatabase.open();
   final settings = await SettingsRepository(db).loadAll();
 
+  // AdMob only exists on Android and iOS.
+  final AdsFacade ads = (Platform.isAndroid || Platform.isIOS)
+      ? GoogleAdsService()
+      : NoopAdsService();
+
   runApp(
     ProviderScope(
       overrides: [
+        adsFacadeProvider.overrideWithValue(ads),
         appDatabaseProvider.overrideWithValue(db),
         fileStoreProvider.overrideWithValue(files),
         initialSettingsProvider.overrideWithValue(settings),

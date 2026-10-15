@@ -13,6 +13,7 @@ class HelpScreen extends StatelessWidget {
       (l10n.helpQ2, l10n.helpA2),
       (l10n.helpQ3, l10n.helpA3),
       (l10n.helpQ4, l10n.helpA4),
+      (l10n.helpQ5, l10n.helpA5),
     ];
     return Scaffold(
       appBar: AppBar(title: Text(l10n.helpTitle)),

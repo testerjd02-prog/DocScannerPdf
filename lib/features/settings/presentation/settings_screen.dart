@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n_x.dart';
 import '../../../core/theme/app_theme.dart';
+import '../../ads/presentation/ad_settings_section.dart';
 import '../../scan/domain/ocr_result.dart';
 import '../data/settings_providers.dart';
 
@@ -101,6 +102,7 @@ class SettingsScreen extends ConsumerWidget {
               }
             },
           ),
+          const AdSettingsSection(),
           _Header(l10n.settingsAbout),
           ListTile(
             leading: const Icon(Icons.help_outline),

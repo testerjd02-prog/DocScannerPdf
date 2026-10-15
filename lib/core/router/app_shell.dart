@@ -1,17 +1,40 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/ads/data/ads_providers.dart';
+import '../../features/ads/presentation/banner_ad_slot.dart';
 import '../../features/scan/presentation/scan_actions.dart';
 import '../l10n_x.dart';
 import '../theme/app_theme.dart';
 
 /// Bottom navigation (Home, Library, Packets, Settings) with a large scan
 /// button docked in the centre.
-class AppShell extends ConsumerWidget {
+class AppShell extends ConsumerStatefulWidget {
   const AppShell({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
+
+  @override
+  ConsumerState<AppShell> createState() => _AppShellState();
+}
+
+class _AppShellState extends ConsumerState<AppShell> {
+  bool _bannerVisible = false;
+
+  StatefulNavigationShell get navigationShell => widget.navigationShell;
+
+  @override
+  void initState() {
+    super.initState();
+    // Consent (UMP) and SDK start-up happen once the first tab is on screen,
+    // never over onboarding and never before the user can see the app.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) unawaited(ref.read(adsFacadeProvider).start());
+    });
+  }
 
   void _go(int index) => navigationShell.goBranch(
     index,
@@ -19,7 +42,8 @@ class AppShell extends ConsumerWidget {
   );
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
+    ref.watch(adsWiringProvider);
     final l10n = context.l10n;
     final current = navigationShell.currentIndex;
 
@@ -37,8 +61,28 @@ class AppShell extends ConsumerWidget {
       ),
     );
 
+    // The banner sits at the top: the docked scan button covers the bottom
+    // edge, and ads must never be overlapped by other controls. Ads never
+    // appear on scan, crop, review or editor screens (they are not tabs).
     return Scaffold(
-      body: navigationShell,
+      body: Column(
+        children: [
+          BannerAdSlot(
+            onVisibilityChanged: (v) {
+              if (mounted) setState(() => _bannerVisible = v);
+            },
+          ),
+          Expanded(
+            child: _bannerVisible
+                ? MediaQuery.removePadding(
+                    context: context,
+                    removeTop: true,
+                    child: navigationShell,
+                  )
+                : navigationShell,
+          ),
+        ],
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Semantics(
         label: l10n.scanButtonLabel,

@@ -1,7 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- PacketPal needs no runtime permissions: Google's document scanner
+    <!-- PacketPal asks for no runtime permissions: Google's document scanner
          brings its own camera UI and the pickers use the system chooser.
+         The AdMob SDK adds INTERNET, ACCESS_NETWORK_STATE and the
+         advertising-ID permission through manifest merging.
          allowBackup is off so scans are never copied to a cloud backup. -->
     <application
         android:label="@string/app_name"
@@ -33,6 +35,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!-- AdMob app id (test id unless -PadmobAppId is passed). -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}" />
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

@@ -546,7 +546,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsPrivacyBody =>
-      'PacketPal has no account and no cloud upload. Text recognition runs on the phone. Nothing about your documents is sent anywhere.';
+      'PacketPal has no account and no cloud upload. Text recognition runs on the phone, and your documents and the text in them are never sent anywhere. Ads, when shown, come from Google AdMob and never receive your documents.';
 
   @override
   String get settingsLanguage => 'Language';
@@ -655,4 +655,45 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kindFallback => 'Document';
+
+  @override
+  String get settingsAds => 'Ads';
+
+  @override
+  String get adsBreakTitle => 'Take an ad-free break';
+
+  @override
+  String adsBreakSubtitle(int minutes) {
+    return 'Watch a short video, then use PacketPal without ads for $minutes minutes';
+  }
+
+  @override
+  String adsBreakActive(String time) {
+    return 'Ad-free until $time';
+  }
+
+  @override
+  String get adsLoadingVideo => 'Loading video…';
+
+  @override
+  String get adsVideoUnavailable =>
+      'No video is available right now. Please try again in a moment.';
+
+  @override
+  String adsBreakGranted(int minutes) {
+    return 'Enjoy $minutes minutes without ads';
+  }
+
+  @override
+  String get adsPrivacyChoices => 'Privacy & ad choices';
+
+  @override
+  String get adsPrivacyChoicesSubtitle => 'Review or change your ad consent';
+
+  @override
+  String get helpQ5 => 'Why are there ads?';
+
+  @override
+  String get helpA5 =>
+      'Ads keep scanning and OCR free with no page limits or watermarks. Ads are served by Google AdMob and never see your documents or the text in them. You can change your ad choices in Settings, or take a short ad-free break.';
 }

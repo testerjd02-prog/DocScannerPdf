@@ -25,7 +25,7 @@ flutter test
 flutter analyze
 ```
 
-* Android: min SDK 21 (ML Kit). Google's document scanner downloads its model
+* Android: min SDK 24 (AdMob / ML Kit). Google's document scanner downloads its model
   through Google Play services the first time it is used, so that first scan
   needs a connection; everything after works offline.
 * iOS: deployment target 15.5 (ML Kit text recognition). Run `pod install`
@@ -64,7 +64,10 @@ Key design decisions
 * **Delete with undo.** Documents are soft-deleted (`trashedAt`); when the Undo
   snackbar goes away the files are permanently removed. Leftovers are purged on
   launch.
-* **Privacy defaults.** No network code, no analytics. Android auto-backup is off
+* **Ads.** AdMob (banner, native in the library, interstitial, rewarded, app-open)
+  behind Google UMP consent; see [docs/ADS.md](docs/ADS.md). Ads never touch
+  documents, and never appear on scan or editing screens.
+* **Privacy defaults.** No analytics and no document uploads. Android auto-backup is off
   in the manifest; the iOS documents folder is flagged "exclude from backup".
   EXIF metadata is dropped from every imported or edited image.
 
